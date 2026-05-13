@@ -36,6 +36,7 @@ interface ArchitectureItem {
 interface BlogPost {
   title: string;
   description: string;
+  content: string;
   date: string;
   tags: string[];
   link: string;
@@ -189,15 +190,38 @@ export class Portfolio {
     {
       title: 'If I Had to Design My First System Again',
       description: 'Things I learned the hard way about scaling, structure, database design, and why good systems are built with good decisions — not just good code.',
+      content: `If I had to design my first system again today, I would do a lot of things differently.
+
+Not because I didn't know how to code…
+But because I didn't understand how systems behave as they grow.
+
+Here are a few things I've learned the hard way:
+
+I would think about scale earlier.
+
+Back then, I built everything assuming a small number of users. But as usage grows, things break in unexpected ways — slow APIs, heavy database queries, timeouts.
+
+Today, I'd at least ask: "What happens if this grows 10x?"
+
+I would focus more on structure than just making it work.
+
+Earlier, the goal was simple: finish the feature. Now I realize structure matters — how you organize layers, responsibilities, and dependencies. A system that "works" is not always easy to maintain.
+
+I would avoid overengineering… but also underthinking.
+
+In the beginning, I either kept things too simple or tried to copy complex architectures. Now I see that the real skill is balance: build for today, but don't block tomorrow.
+
+I would pay more attention to database design.
+
+Most performance issues I've seen later were not in code — they were in data access. Better queries, indexing, and data modeling would have saved a lot of effort.
+
+I would think about failures.
+
+Earlier, I assumed things would work. Now I think: What if this API fails? What if the database is slow? How will the system behave?
+
+Biggest realization for me: Good systems are not just built with good code. They are built with good decisions.`,
       date: 'May 2026',
       tags: ['System Design', 'Architecture', 'Lessons Learned'],
-      link: '#',
-    },
-    {
-      title: 'Why Your Enterprise App Needs a Frontend Architecture, Not Just a Framework',
-      description: 'How moving beyond framework-level thinking to intentional architecture saves teams from rewrite cycles, technical debt, and scaling pain.',
-      date: 'Apr 2026',
-      tags: ['Angular', 'Architecture', 'Enterprise'],
       link: '#',
     },
   ];
@@ -221,6 +245,7 @@ export class Portfolio {
   activeSection = 'hero';
   mobileMenuOpen = false;
   activeProjectTab = 'freelance';
+  openBlogIndex: number | null = null;
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -233,6 +258,10 @@ export class Portfolio {
 
   switchProjectTab(tab: string): void {
     this.activeProjectTab = tab;
+  }
+
+  toggleBlog(index: number): void {
+    this.openBlogIndex = this.openBlogIndex === index ? null : index;
   }
 
   downloadResume(): void {
