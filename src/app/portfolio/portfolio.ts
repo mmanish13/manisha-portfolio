@@ -195,6 +195,7 @@ export class Portfolio {
 
   activeSection = 'hero';
   mobileMenuOpen = false;
+  activeProjectTab = 'freelance';
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
@@ -203,6 +204,10 @@ export class Portfolio {
   navigateTo(section: string): void {
     this.activeSection = section;
     this.mobileMenuOpen = false;
+  }
+
+  switchProjectTab(tab: string): void {
+    this.activeProjectTab = tab;
   }
 
   downloadResume(): void {
