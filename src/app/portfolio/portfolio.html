@@ -10,6 +10,7 @@
         <button (click)="navigateTo('experience')" class="text-sm px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">Experience</button>
         <button (click)="navigateTo('projects')" class="text-sm px-4 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white font-medium hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300">Projects</button>
         <button (click)="navigateTo('services')" class="text-sm px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Services</button>
+        <button (click)="navigateTo('blog')" class="text-sm px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-medium hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300">Blog</button>
         <button (click)="navigateTo('contact')" class="text-sm px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Contact</button>
       </div>
       <button (click)="toggleMobileMenu()" class="md:hidden text-gray-400 hover:text-white p-2">
@@ -23,6 +24,7 @@
       <button (click)="navigateTo('experience')" class="block w-full text-sm px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Experience</button>
       <button (click)="navigateTo('projects')" class="block w-full text-sm px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Projects</button>
       <button (click)="navigateTo('services')" class="block w-full text-sm px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Services</button>
+      <button (click)="navigateTo('blog')" class="block w-full text-sm px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Blog</button>
       <button (click)="navigateTo('contact')" class="block w-full text-sm px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-medium text-center hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300">Contact</button>
     </div>
   </div>
@@ -267,6 +269,34 @@
           View GitHub Profile
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section *ngIf="activeSection === 'blog'" id="blog" class="relative py-16 lg:py-20">
+  <div class="absolute inset-0 bg-dark-850/50"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center mb-10 stagger-children">
+      <span class="text-xs text-emerald-400/80 font-semibold tracking-[0.25em] uppercase inline-block animate-fade-in-up">Blog</span>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mt-3 mb-3 tracking-tight animate-fade-in-up" style="animation-delay: 0.15s">Thoughts & Insights</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto text-sm animate-fade-in-up" style="animation-delay: 0.3s">Engineering, architecture, and lessons from building enterprise systems</p>
+      <div class="w-12 h-[2px] bg-gradient-to-r from-emerald-400 to-teal-500 mx-auto rounded-full mt-5 animate-fade-in-up" style="animation-delay: 0.4s"></div>
+    </div>
+    <div class="max-w-4xl mx-auto space-y-6">
+      <div *ngFor="let post of blogs; let i = index" class="glass-card rounded-2xl p-6 hover:border-emerald-500/20 transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/10 animate-fade-in-up group" [style.animation-delay]="(0.1 + i * 0.15) + 's'">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">{{ post.title }}</h3>
+          <span class="text-xs text-gray-500 shrink-0">{{ post.date }}</span>
+        </div>
+        <p class="text-sm text-gray-400 leading-relaxed mb-4">{{ post.description }}</p>
+        <div class="flex items-center justify-between">
+          <div class="flex flex-wrap gap-2">
+            <span *ngFor="let tag of post.tags" class="px-2.5 py-1 rounded-lg bg-white/[0.04] border border-white/[0.06] text-[11px] text-gray-400 font-medium">{{ tag }}</span>
+          </div>
+          <a [href]="post.link" class="text-emerald-400 text-sm font-medium hover:text-emerald-300 transition-colors duration-300 flex items-center gap-1">Read <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+        </div>
       </div>
     </div>
   </div>

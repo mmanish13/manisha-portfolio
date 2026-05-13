@@ -33,6 +33,14 @@ interface ArchitectureItem {
   image: string;
 }
 
+interface BlogPost {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  link: string;
+}
+
 interface FloatingIcon {
   name: string;
   icon: string;
@@ -174,6 +182,23 @@ export class Portfolio {
       description: 'Azure-based cloud solutions with auto-scaling, managed services, distributed caching, and CI/CD pipelines.',
       icon: '☁️',
       image: 'linear-gradient(135deg, #fb923c, #ef4444)',
+    },
+  ];
+
+  blogs: BlogPost[] = [
+    {
+      title: 'Building Scalable Angular Apps with Standalone Components',
+      description: 'How Angular 19 standalone components simplify architecture, reduce boilerplate, and improve tree-shakability in enterprise applications.',
+      date: 'May 2026',
+      tags: ['Angular', 'Architecture', 'TypeScript'],
+      link: '#',
+    },
+    {
+      title: 'AI-Augmented Engineering: Boosting Productivity Without Losing Quality',
+      description: 'Practical ways to integrate AI tools into your .NET and Angular workflow — from code generation to automated testing and code review.',
+      date: 'Apr 2026',
+      tags: ['AI', 'Productivity', 'Best Practices'],
+      link: '#',
     },
   ];
 
