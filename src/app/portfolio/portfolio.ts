@@ -187,17 +187,17 @@ export class Portfolio {
 
   blogs: BlogPost[] = [
     {
-      title: 'Building Scalable Angular Apps with Standalone Components',
-      description: 'How Angular 19 standalone components simplify architecture, reduce boilerplate, and improve tree-shakability in enterprise applications.',
+      title: 'If I Had to Design My First System Again',
+      description: 'Things I learned the hard way about scaling, structure, database design, and why good systems are built with good decisions — not just good code.',
       date: 'May 2026',
-      tags: ['Angular', 'Architecture', 'TypeScript'],
+      tags: ['System Design', 'Architecture', 'Lessons Learned'],
       link: '#',
     },
     {
-      title: 'AI-Augmented Engineering: Boosting Productivity Without Losing Quality',
-      description: 'Practical ways to integrate AI tools into your .NET and Angular workflow — from code generation to automated testing and code review.',
+      title: 'Why Your Enterprise App Needs a Frontend Architecture, Not Just a Framework',
+      description: 'How moving beyond framework-level thinking to intentional architecture saves teams from rewrite cycles, technical debt, and scaling pain.',
       date: 'Apr 2026',
-      tags: ['AI', 'Productivity', 'Best Practices'],
+      tags: ['Angular', 'Architecture', 'Enterprise'],
       link: '#',
     },
   ];
